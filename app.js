@@ -1,5 +1,5 @@
-const GROUPS=['Getting Started','Configuration','Integrations','Reference','Support'];
-const icons={'Home':'⌂','Getting Started':'↗','Configuration':'⚙','Integrations':'⇄','Reference':'⌘','Support':'?'};
+const GROUPS=['Getting Started','G7 Scripts','Configuration','Integrations','Reference','Support'];
+const icons={'Home':'⌂','Getting Started':'↗','G7 Scripts':'◆','Configuration':'⚙','Integrations':'⇄','Reference':'⌘','Support':'?'};
 let docs=[],current='home';
 const $=id=>document.getElementById(id);
 const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));

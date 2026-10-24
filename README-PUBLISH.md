@@ -28,3 +28,8 @@ Markdown source pages are in `content/g7_lean_system/`. The live site uses `docs
 - Accent color: `#5b376a` with lighter purple highlights.
 - The first version includes G7 Lean System documentation only. Other G7 scripts can be added as more sections/pages.
 - Google Fonts is loaded from an external CDN; if unavailable, the site falls back to system fonts.
+
+
+## Added script installation guides
+
+The sidebar now includes a **G7 Scripts** section with installation pages for G7 Black Market Phone, G7 Black Market, G7 Drug Sales, G7 Inventory, G7 Vape System, G7 Reports V2, G7 Admin Pockets, G7 Banking, and G7 Illegal Weapon. The original G7 Lean System documentation and Discord support links are preserved.
