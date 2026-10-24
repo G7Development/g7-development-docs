@@ -1,21 +1,56 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#0d0b10"><meta name="description" content="Official G7 Development documentation for FiveM resources.">
-<title>G7 Development Docs</title><link rel="icon" href="assets/g7-mark.svg" type="image/svg+xml"><link rel="stylesheet" href="styles.css">
-</head><body>
-<div class="app-shell">
-  <aside class="sidebar" id="sidebar">
-    <a class="brand" href="#home" aria-label="G7 Development home"><span class="brand-mark">G7</span><span class="brand-copy"><b>G7 DEVELOPMENT</b><small>DOCUMENTATION</small></span></a>
-    <div class="search-wrap"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="m16 16 4 4"></path></svg><input id="search" type="search" placeholder="Search documentation…" autocomplete="off"><kbd>⌘ K</kbd></div>
-    <nav id="navigation" aria-label="Documentation navigation"></nav>
-    <div class="sidebar-footer"><span class="status-dot"></span> Documentation hub <span class="version">v1.0</span></div>
-  </aside>
-  <main class="main-area">
-    <header class="topbar"><button class="mobile-menu" id="menuButton" aria-label="Open navigation">☰</button><div class="breadcrumbs" id="breadcrumbs">G7 Development <span>/</span> Home</div><div class="top-actions"><a href="https://g7-development.tebex.io/" target="_blank" rel="noreferrer">Tebex store <span>↗</span></a><button id="themeButton" title="Toggle theme" aria-label="Toggle theme">◐</button></div></header>
-    <div class="content-wrap"><article id="article" class="article"><div class="loading">Loading documentation…</div></article><footer class="page-footer"><span>Built for creators. Built for roleplay.</span><span>© <span id="year"></span> G7 Development</span></footer></div>
-  </main>
-</div>
-<div class="search-overlay" id="searchOverlay" hidden><div class="search-modal"><div class="search-modal-head"><strong>Search documentation</strong><button id="closeSearch" aria-label="Close search">✕</button></div><input id="modalSearch" type="search" placeholder="Search pages, settings, integrations…"><div id="searchResults" class="search-results"><p class="muted">Start typing to search all documentation.</p></div><div class="search-hint"><kbd>ESC</kbd> to close <span>·</span> Select a result to open</div></div></div>
-<script src="app.js"></script></body></html>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#100d13">
+  <meta name="description" content="Official G7 Development documentation for premium FiveM resources, setup guides, configuration, integrations, and support.">
+  <title>G7 Development — Documentation</title>
+  <link rel="icon" href="assets/g7-mark.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar">
+      <a class="brand" href="#home" aria-label="G7 Development home">
+        <img class="brand-mark" src="assets/g7-mark.svg" alt="G7">
+        <span class="brand-copy"><b>G7 DEVELOPMENT</b><small>DOCUMENTATION HUB</small></span>
+      </a>
+      <div class="sidebar-label">FIND YOUR WAY</div>
+      <button class="search-wrap" id="searchButton" type="button" aria-label="Search documentation">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="m16 16 4 4"></path></svg>
+        <span>Search documentation...</span><kbd>Ctrl K</kbd>
+      </button>
+      <nav id="navigation" aria-label="Documentation navigation"></nav>
+      <div class="sidebar-bottom">
+        <div class="sidebar-status"><span class="status-dot"></span><span>Documentation hub</span><span class="version">v1.0</span></div>
+        <a class="sidebar-store" href="https://g7-development.tebex.io/" target="_blank" rel="noreferrer"><span class="store-icon">↗</span><span><b>G7 Store</b><small>Explore our resources</small></span><span class="store-arrow">↗</span></a>
+      </div>
+    </aside>
+
+    <main class="main-area">
+      <header class="topbar">
+        <div class="topbar-left"><button class="mobile-menu" id="menuButton" aria-label="Open navigation">☰</button><div class="breadcrumbs" id="breadcrumbs">G7 Development <span>/</span> Home</div></div>
+        <div class="top-actions"><span class="top-status"><span class="status-dot"></span> All systems documented</span><a class="top-store" href="https://g7-development.tebex.io/" target="_blank" rel="noreferrer">Visit store <span>↗</span></a><button id="themeButton" title="Toggle light and dark theme" aria-label="Toggle theme">◐</button></div>
+      </header>
+      <div class="content-wrap">
+        <article id="article" class="article"><div class="loading"><span class="loader"></span> Loading documentation...</div></article>
+        <footer class="page-footer"><span><b>G7 DEVELOPMENT</b><span class="footer-separator">/</span> Built for creators. Built for roleplay.</span><span>© <span id="year"></span> G7 Development</span></footer>
+      </div>
+    </main>
+  </div>
+
+  <div class="search-overlay" id="searchOverlay" hidden>
+    <div class="search-modal" role="dialog" aria-modal="true" aria-labelledby="searchTitle">
+      <div class="search-modal-head"><div><span class="modal-kicker">G7 KNOWLEDGE BASE</span><strong id="searchTitle">Search documentation</strong></div><button id="closeSearch" aria-label="Close search">✕</button></div>
+      <div class="modal-input-wrap"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="m16 16 4 4"></path></svg><input id="modalSearch" type="search" placeholder="Try “inventory”, “config”, or “installation”…" autocomplete="off"></div>
+      <div id="searchResults" class="search-results"><p class="muted">Start typing to search all documentation.</p></div>
+      <div class="search-hint"><span><kbd>ESC</kbd> to close</span><span>Search all guides and references</span></div>
+    </div>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>
