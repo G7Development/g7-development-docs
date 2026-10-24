@@ -35,9 +35,9 @@
     <main class="main-area">
       <header class="topbar">
         <div class="topbar-left"><button class="mobile-menu" id="menuButton" aria-label="Open navigation">☰</button><div class="breadcrumbs" id="breadcrumbs">G7 Development <span>/</span> Home</div></div>
-        <div class="top-actions"><span class="top-status"><span class="status-dot"></span> All systems documented</span><a class="top-store" href="https://g7-development.tebex.io/" target="_blank" rel="noreferrer">Visit store <span>↗</span></a><button id="themeButton" title="Toggle light and dark theme" aria-label="Toggle theme">◐</button></div>
+        <div class="top-actions"><span class="top-status"><span class="status-dot"></span> Documentation online</span><button class="top-tool" id="assistantButton" title="Ask G7 Docs">✦ <span>Ask Docs</span></button><a class="top-store" href="https://g7-development.tebex.io/" target="_blank" rel="noreferrer">Visit store <span>↗</span></a><button id="themeButton" title="Toggle light and dark theme" aria-label="Toggle theme">◐</button></div>
       </header>
-      <div class="content-wrap">
+      <div class="reading-progress" id="readingProgress"></div><div class="content-wrap">
         <article id="article" class="article"><div class="loading"><span class="loader"></span> Loading documentation...</div></article>
         <footer class="page-footer"><span><b>G7 DEVELOPMENT</b><span class="footer-separator">/</span> Built for creators. Built for roleplay.</span><span class="footer-right"><a class="footer-support" href="https://discord.gg/P6XQ4N6M95" target="_blank" rel="noopener noreferrer">Discord support ↗</a><span>© <span id="year"></span> G7 Development</span></span></footer>
       </div>
@@ -51,6 +51,14 @@
       <div id="searchResults" class="search-results"><p class="muted">Start typing to search all documentation.</p></div>
       <div class="search-hint"><span><kbd>ESC</kbd> to close</span><span>Search all guides and references</span></div>
     </div>
+  </div>
+  <div class="utility-overlay" id="utilityOverlay" hidden>
+    <section class="utility-modal" role="dialog" aria-modal="true" aria-labelledby="utilityTitle">
+      <div class="utility-head"><div><span class="modal-kicker">G7 DEVELOPMENT</span><h2 id="utilityTitle">Ask G7 Docs</h2></div><button id="closeUtility" aria-label="Close panel">✕</button></div>
+      <p class="utility-intro" id="utilityIntro">Get pointed to the right guide. Answers are based on the documentation included with this site.</p>
+      <div class="assistant-chips" id="assistantChips"><button data-question="How do I install a script?">Install a script</button><button data-question="How do I configure inventory?">Inventory setup</button><button data-question="How do I fix permissions?">Permissions</button></div>
+      <div id="utilityBody"></div>
+    </section>
   </div>
   <script src="app.js"></script>
 </body>
