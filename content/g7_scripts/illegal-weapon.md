@@ -6,7 +6,7 @@ Setup takes about ten minutes. No SQL import is needed.
 
 ---
 
-## 1. Requirements
+## Requirements
 
 | Requirement | Notes |
 |---|---|
@@ -22,7 +22,7 @@ Setup takes about ten minutes. No SQL import is needed.
 
 ---
 
-## 2. Install the resource
+## Step 1 — Install the resource
 
 1. Download and extract the resource.
 2. Put the folder in your `resources` directory. **The folder name must be exactly `g7_illegalweapon`.**
@@ -41,7 +41,7 @@ resources/
 
 ---
 
-## 3. Add your props
+## Step 2 — Add your props
 
 The script spawns two custom props. Both are optional, and each has a fallback model if yours is missing or fails to stream.
 
@@ -60,7 +60,7 @@ The script spawns two custom props. Both are optional, and each has a fallback m
 
 ---
 
-## 4. Register the items
+## Step 3 — Register the items
 
 Pick the file for your inventory from `install/` and paste its contents into your inventory's item list.
 
@@ -102,7 +102,7 @@ Copy everything in `install/images/` to your inventory's image folder.
 
 ---
 
-## 5. Add your own weapons
+## Step 4 — Add your own weapons
 
 Weapons are defined in `config/recipes.lua`. No other file needs editing.
 
@@ -124,7 +124,7 @@ To add a new recipe, copy an existing block and change `id`, `label`, `blueprint
 
 ---
 
-## 6. Start the resource
+## Step 5 — Start the resource
 
 Add this to `server.cfg`, **after** ox_lib, your framework, your inventory and your target script:
 
@@ -148,19 +148,19 @@ Restart the server. The console should print the detected framework and inventor
 
 ---
 
-## 7. Configure
+## Step 6 — Configure
 
 All settings live in `config/`:
 
 | File | Controls |
 |---|---|
-| `main.lua` | Framework, inventory, target, notify and dispatch overrides. Logo, accent color, money accounts, police jobs, progression, webhook logs. |
+| `main.lua` | Framework, inventory, target, notify and dispatch overrides. Accent color, money accounts, police jobs, progression, webhook logs. |
 | `printer.lua` | Printer, computer and laptop props. Placement rules, limits, filament, wear and jams, tracker, VPN, police heat, ATM. |
 | `recipes.lua` | Weapon recipes and assembly. |
 | `shop.lua` | Dark web products, prices, stock and order expiry. |
 | `delivery.lua` | Delivery tiers, courier appearance, claim window and meet points. |
 
-### Logo and color
+### Accent color
 
 In `config/main.lua`:
 
@@ -172,7 +172,7 @@ Config.Theme = {
 }
 ```
 
-Replace `web/img/logo.svg` with your logo, or add a new file to `web/img/` and change `logo`. Square images work best.
+Change `accent` to recolor the whole UI. Leave `brand` and `logo` as they are, since the G7 logo is already included.
 
 ### Delivery locations
 
@@ -188,7 +188,7 @@ Strings live in `locales/en.lua`. Copy it to `locales/xx.lua`, rename `Locales.e
 
 ---
 
-## 8. Test checklist
+## Step 7 — Test checklist
 
 Give yourself the items from the console, then check each step:
 
@@ -202,7 +202,7 @@ Give yourself the items from the console, then check each step:
 
 ---
 
-## 9. Admin commands
+## Admin commands
 
 Require the `g7illegal.admin` ACE (see section 6). They also work from the server console.
 
@@ -214,7 +214,7 @@ Require the `g7illegal.admin` ACE (see section 6). They also work from the serve
 
 ---
 
-## 10. Custom framework or inventory
+## Custom framework or inventory
 
 ### Custom inventory
 
@@ -242,7 +242,7 @@ Set `Config.Dispatch = 'custom'` and fill in `Config.CustomDispatch` in `config/
 
 ---
 
-## 11. Troubleshooting
+## Troubleshooting
 
 | Problem | Fix |
 |---|---|
@@ -259,11 +259,11 @@ Set `Config.Dispatch = 'custom'` and fill in `Config.CustomDispatch` in `config/
 
 ---
 
-## 12. Updating
+## Updating
 
 1. Back up your `config/` folder and `web/img/`.
 2. Replace the resource files.
-3. Restore your config and logo, and compare against the new config for added options.
+3. Restore your config, and compare against the new config for added options.
 4. Restart the resource. Printers are kept.
 
 ---
@@ -271,3 +271,9 @@ Set `Config.Dispatch = 'custom'` and fill in `Config.CustomDispatch` in `config/
 ## Support
 
 For support, contact **G7 Development**.
+
+---
+
+Store: https://g7-development.tebex.io/ · Discord: https://discord.gg/P6XQ4N6M95
+
+Every G7 script auto-detects its framework (Qbox, QBCore, ESX) and inventory (g7_inventory first, then ox_inventory, qs-inventory, qb/ps/lj, ESX default). Always ensure G7 scripts **after** your framework, inventory and `oxmysql`.

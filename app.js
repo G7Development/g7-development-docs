@@ -4,7 +4,7 @@ let docs=[],current='home';
 const $=id=>document.getElementById(id);
 const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 function slugify(s){return s.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'')}
-function inline(s){return esc(s).replace(/`([^`]+)`/g,'<code>$1</code>').replace(/\*\*(.+?)\*\*/g,'<strong>$1</strong>').replace(/\*(.+?)\*/g,'<em>$1</em>').replace(/\[(.+?)\]\((https?:\/\/[^\s)]+|[^\s)]+)\)/g,'<a href="$2" target="_blank" rel="noreferrer">$1</a>')}
+function inline(s){return esc(s).replace(/`([^`]+)`/g,'<code>$1</code>').replace(/\*\*(.+?)\*\*/g,'<strong>$1</strong>').replace(/\*(.+?)\*/g,'<em>$1</em>').replace(/\[(.+?)\]\(#([a-z0-9-]+)\)/g,'<a href="#" class="anchor-link" data-anchor="$2">$1</a>').replace(/\[(.+?)\]\((https?:\/\/[^\s)]+|[^\s)#][^\s)]*)\)/g,'<a href="$2" target="_blank" rel="noreferrer">$1</a>')}
 function md(src){
   const lines=src.replace(/\r/g,'').split('\n');let out='',para=[],list='',code=false,codeLines=[],quote=[];
   const flushPara=()=>{if(para.length){out+='<p>'+inline(para.join(' '))+'</p>';para=[]}};
@@ -17,13 +17,11 @@ function md(src){
     if(l.trim().startsWith('```')){flushPara();flushList();flushQuote();if(!code){code=true;codeLines=[]}else{out+='<pre><code>'+esc(codeLines.join('\n'))+'</code></pre>';code=false}continue}
     if(code){codeLines.push(l);continue}
     if(isTableRow(l)&&i+1<lines.length&&/^\s*\|?\s*:?-{3,}/.test(lines[i+1])){
-      flushPara();flushList();flushQuote();const headers=cells(l);i++;while(i+1<lines.length&&isTableRow(lines[i+1])){i++;}
-      const end=i;let rows=[];let start=end;while(start>=0&&isTableRow(lines[start]))start--;start+=1;
-      for(let r=start;r<=end;r++){rows.push(cells(lines[r]))}
+      flushPara();flushList();flushQuote();const headers=cells(l);i++;let rows=[];while(i+1<lines.length&&isTableRow(lines[i+1])){i++;rows.push(cells(lines[i]))}
       out+='<div class="table-wrap"><table><thead><tr>'+headers.map(c=>'<th>'+inline(c)+'</th>').join('')+'</tr></thead><tbody>'+rows.map(row=>'<tr>'+headers.map((_,j)=>'<td>'+inline(row[j]||'')+'</td>').join('')+'</tr>').join('')+'</tbody></table></div>';continue;
     }
     if(!l.trim()){flushPara();flushList();flushQuote();continue}
-    if(/^\s*[-*]\s+/.test(l)||/^\s*\d+\.\s+/.test(l)){flushPara();flushQuote();const typ=/^\s*\d+\.\s+/.test(l)?'ol':'ul';if(list!==typ){flushList();list=typ;out+='<'+list+'>'}out+='<li>'+inline(l.replace(/^\s*(?:[-*]|\d+\.)\s+/,''))+'</li>';continue}
+    if(/^\s*[-*]\s+/.test(l)||/^\s*\d+\.\s+/.test(l)){flushPara();flushQuote();const typ=/^\s*\d+\.\s+/.test(l)?'ol':'ul';if(list!==typ){flushList();list=typ;const sn=typ==='ol'?parseInt(l.trim(),10):1;out+='<'+list+(typ==='ol'&&sn>1?' start="'+sn+'"':'')+'>'}out+='<li>'+inline(l.replace(/^\s*(?:[-*]|\d+\.)\s+/,''))+'</li>';continue}
     flushList();if(/^>\s?/.test(l)){flushPara();quote.push(l.replace(/^>\s?/,''));continue}flushQuote();
     const h=l.match(/^(#{1,4})\s+(.+)/);if(h){flushPara();const n=h[1].length,text=h[2].replace(/\s+#+\s*$/,'');out+=`<h${n} id="${slugify(text)}">${inline(text)}</h${n}>`;continue}
     if(/^---+$/.test(l.trim())){flushPara();out+='<hr>';continue}para.push(l.trim());
@@ -51,3 +49,5 @@ function bindHome(){const pairs=[['heroSearch',openSearch],['quickSearch',openSe
 $('closeUtility').addEventListener('click',()=>$('utilityOverlay').hidden=true);$('utilityOverlay').addEventListener('click',e=>{if(e.target===$('utilityOverlay'))$('utilityOverlay').hidden=true});document.addEventListener('keydown',e=>{if(e.key==='Escape')$('utilityOverlay').hidden=true});window.addEventListener('scroll',()=>{const max=document.documentElement.scrollHeight-window.innerHeight;$('readingProgress').style.width=(max>0?window.scrollY/max*100:0)+'%'},{passive:true});
 fetch('docs.json').then(r=>{if(!r.ok)throw new Error('docs.json unavailable');return r.json()}).then(data=>{docs=data;nav();$('year').textContent=new Date().getFullYear();const initial=decodeURIComponent(location.hash.slice(1))||'home';render(initial);window.addEventListener('hashchange',()=>{const slug=decodeURIComponent(location.hash.slice(1))||'home';if(slug!==current)render(slug)});}).catch(()=>{$('article').innerHTML='<h1>Unable to load docs</h1><p>Please refresh the page or check that docs.json is present in the website folder.</p>'});
 $('searchButton').addEventListener('click',openSearch);$('closeSearch').addEventListener('click',closeSearch);$('searchOverlay').addEventListener('click',e=>{if(e.target===$('searchOverlay'))closeSearch()});$('modalSearch').addEventListener('input',e=>search(e.target.value));$('themeButton').addEventListener('click',()=>{document.body.classList.toggle('light-mode');$('themeButton').setAttribute('aria-label',document.body.classList.contains('light-mode')?'Switch to dark theme':'Switch to light theme')});$('menuButton').addEventListener('click',()=>$('sidebar').classList.toggle('open'));document.addEventListener('keydown',e=>{if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='k'){e.preventDefault();openSearch()}if(e.key==='Escape')closeSearch()});
+
+document.addEventListener('click',e=>{const a=e.target.closest&&e.target.closest('a.anchor-link');if(!a)return;e.preventDefault();const t=document.getElementById(a.dataset.anchor);if(t)t.scrollIntoView({behavior:'smooth',block:'start'})});

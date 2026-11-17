@@ -17,19 +17,19 @@ G7 Inventory is a drop-in replacement for **ox_inventory**. Scripts that use `ex
 
 ---
 
-## 1. Remove your old inventory
+## Step 1 — Remove your old inventory
 
 G7 Inventory registers itself as `ox_inventory`, so **it can't run alongside another inventory**.
 
 - **From ox_inventory:** stop it and remove it from your server (or move it out of your resources folder). Your existing items, stashes, trunks and gloveboxes are kept. G7 uses the same database layout, so nothing needs converting.
-- **From qb-inventory, ps-inventory or lj-inventory:** remove the inventory resource, then follow [Moving over from another inventory](#5-moving-over-from-another-inventory) after the first start.
-- **From the default ESX inventory:** nothing to remove. Follow [Moving over from another inventory](#5-moving-over-from-another-inventory) after the first start.
+- **From qb-inventory, ps-inventory or lj-inventory:** remove the inventory resource, then follow [Moving over from another inventory](#moving-over-from-another-inventory) after the first start.
+- **From the default ESX inventory:** nothing to remove. Follow [Moving over from another inventory](#moving-over-from-another-inventory) after the first start.
 
 > **Back up your database before installing.** Any inventory change is worth a backup first.
 
 ---
 
-## 2. Add the resource
+## Step 2 — Add the resource
 
 1. Download `g7_inventory` and extract it into your resources folder.
 2. Keep the folder name **`g7_inventory`**. It's used for image paths and exports.
@@ -51,7 +51,7 @@ resources/
 
 ---
 
-## 3. Update server.cfg
+## Step 3 — Update server.cfg
 
 Start G7 Inventory **after** oxmysql, ox_lib and your framework, and **before** any script that uses the inventory.
 
@@ -78,7 +78,7 @@ ensure [scripts]
 
 ---
 
-## 4. Start the server
+## Step 4 — Start the server
 
 On first start, G7 creates the tables and columns it needs:
 
@@ -102,7 +102,7 @@ Check that the framework named there is the one you use. To force a different on
 
 ---
 
-## 5. Moving over from another inventory
+## Moving over from another inventory
 
 Skip this step if you came from **ox_inventory**: your data already works.
 
@@ -315,3 +315,9 @@ Only one inventory can run. Remove ox_inventory, qb-inventory, ps-inventory or l
 2. Replace the whole `g7_inventory` folder, so the built UI files in `web/build` are replaced too.
 3. Put your `config.lua` and `data/` files back, then compare them with the new versions for any new settings. The changelog lists them.
 4. Restart the server.
+
+---
+
+Store: https://g7-development.tebex.io/ · Discord: https://discord.gg/P6XQ4N6M95
+
+Every G7 script auto-detects its framework (Qbox, QBCore, ESX) and inventory (g7_inventory first, then ox_inventory, qs-inventory, qb/ps/lj, ESX default). Always ensure G7 scripts **after** your framework, inventory and `oxmysql`.

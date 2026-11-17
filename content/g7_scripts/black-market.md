@@ -20,10 +20,7 @@ Everything is in `install/`. Use the row for your inventory and skip items you a
 | **qs-inventory** | `install/qs-inventory_items.lua` → `qs-inventory/shared/items.lua` | `install/images/qb/*` → `qs-inventory/html/images/` |
 | **ESX** (default inventory) | Run `install/esx_items.sql` | `install/images/qb/*` → your inventory image folder |
 
-## Step 3 — Add your logo
-Replace `html/g7.png` with your own G7 logo.
-
-## Step 4 — server.cfg
+## Step 3 — server.cfg
 ```cfg
 ensure oxmysql
 # your framework + inventory here
@@ -31,10 +28,10 @@ ensure g7_blackmarket
 ensure g7_blackmarket_phone  # optional, must start AFTER g7_blackmarket
 ```
 
-## Step 5 — Database
+## Step 4 — Database
 Nothing to do. Tables are created automatically on first start.
 
-## Step 6 — Configure
+## Step 5 — Configure
 - **Theme:** `Config.Theme.preset` (`'frost'` default, `'g7'`, `'toxic'`, `'ember'`, `'gold'`, `'mono'` or `'custom'`)
 - **Heist sites:** check `Config.HeistLocations` on your map
 - **Crews:** `Config.Crews` (default: $25k, rank 2)
@@ -46,7 +43,7 @@ Nothing to do. Tables are created automatically on first start.
 - **Item names:** QB-style names are translated automatically; add renames in `Config.ItemAliases`
 - **Custom framework:** set `Config.Framework = 'custom'` and fill in the `Custom` table in `bridge/server.lua`
 
-## Step 7 — Test
+## Step 6 — Test
 1. Restart the server and visit a mission giver.
 2. As admin: `/bmsetrep [id] [amount]` to test rank unlocks, and `/bmevent sale` to test a market event.
 3. As police: buy a weapon and run `/bmtrace [serial]`.

@@ -14,20 +14,17 @@ Put **both** `g7_drugsales` and `g7_trapphone` in your resources folder.
 1. Add the items from `install/items/` for your inventory.
 2. Copy the image from `install/images/` into your inventory image folder.
 
-## Step 3 — Add your logo
-Replace `html/img/g7.png` with your G7 logo.
-
-## Step 4 — server.cfg
+## Step 3 — server.cfg
 Start these after your framework, inventory and target. `g7_trapphone` goes first:
 ```cfg
 ensure g7_trapphone
 ensure g7_drugsales
 ```
 
-## Step 5 — Database
+## Step 4 — Database
 Nothing to do. With oxmysql the table is created automatically; without it, KVP is used.
 
-## Step 6 — Configure (`config.lua`)
+## Step 5 — Configure (`config.lua`)
 - **Drugs:** add entries to `Config.Drugs` (item name as key), or register them from another resource with `exports.g7_drugsales:RegisterDrug(...)`
 - **Payout:** `Config.Payout.Type` = `'item'` (default `black_money`), `'account'` or `'markedbills'`
 - **Police:** minimum cops, price bonus per cop, and dispatch (ps-dispatch, cd_dispatch, qs-dispatch, built-in or custom)
@@ -35,7 +32,7 @@ Nothing to do. With oxmysql the table is created automatically; without it, KVP 
 - **Locations:** use `/g7dscoords` in game to copy a `vec4(...)` for new spots
 - **Phone prop (optional):** stream your own model in `g7_trapphone`
 
-## Step 7 — Test
+## Step 6 — Test
 1. Restart the server.
 2. Give yourself a drug item from your config.
 3. Run `/drugphone` to open the phone, then `/selldrugs` to start corner selling.

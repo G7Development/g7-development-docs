@@ -12,13 +12,13 @@ G7 Reports is a report and ticket system for FiveM. Players send reports and cha
 
 No other dependencies are needed. Fonts and icons are bundled, so the UI works without an internet connection.
 
-## 1. Add the resource
+## Step 1 — Add the resource
 
 1. Download and extract the resource.
 2. Place the `g7-reports` folder in your server's `resources` directory.
 3. **Keep the folder name exactly `g7-reports`.**
 
-## 2. Edit `server.cfg`
+## Step 2 — Edit `server.cfg`
 
 Make sure `oxmysql` and your framework start **before** G7 Reports:
 
@@ -28,7 +28,7 @@ ensure es_extended      # or qb-core / qbx_core
 ensure g7-reports
 ```
 
-## 3. Give your staff access
+## Step 3 — Give your staff access
 
 Staff can open the panel with `/reports`. Access is granted if **any** of the following is true:
 
@@ -57,7 +57,7 @@ add_ace identifier.license:xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx g7-reports.s
 
 > **Tip:** If you already use ESX groups or QBCore permissions, you don't need any ACE lines. Anyone whose group is in `Config.StaffGroups` (`admin`, `superadmin`, `god`, `mod`, `moderator` by default) already has access.
 
-## 4. Start the server
+## Step 4 — Start the server
 
 On first start the script creates its database tables automatically. You should see this in the console:
 
@@ -90,12 +90,12 @@ Everything is in `config/config.lua`.
 | `Config.StaffGroups` | `admin, superadmin, god, mod, moderator` | Groups that count as staff |
 | `Config.AcePermission` | `'g7-reports.staff'` | ACE permission that grants staff access |
 | `Config.Cooldown` | 60 s, max 3 open | Anti-spam: time between reports, open reports per player, chat delay |
-| `Config.Categories` | 7 categories | Report categories, each with an icon, colour and priority |
-| `Config.Priorities` | low to critical | Priority labels and colours |
+| `Config.Categories` | 7 categories | Report categories, each with an icon, color and priority |
+| `Config.Priorities` | low to critical | Priority labels and colors |
 | `Config.Limits` | title 5-80, description 10-1000 | Text length limits |
 | `Config.QuickReplies` | 5 replies | Canned replies shown to staff above the chat box |
 | `Config.Options` | see file | Toggle teleport, bring, return, spectate, ratings, page size and auto-close |
-| `Config.Notify` | 5 s, sound on, top-right | Default notification behaviour |
+| `Config.Notify` | 5 s, sound on, top-right | Default notification behavior |
 | `Config.Discord` | disabled | Webhook logging for new, claimed, closed and rated reports |
 
 ### Discord logging
@@ -128,7 +128,7 @@ Available icons: `flag`, `shield`, `crosshair`, `bug`, `gavel`, `user`, `life-bu
 
 All text lives in `locales/en.lua` and `locales/pt.lua`. To add a language, copy `en.lua`, rename it (for example `es.lua`), change the table key to `Locales['es']`, translate the values, and set `Config.Locale = 'es'`.
 
-## Customising notifications and permissions in code
+## Customizing notifications and permissions in code
 
 `editable/exports.lua` lets you plug G7 Reports into the rest of your server without touching the core files:
 
@@ -165,3 +165,9 @@ Database tables are preserved between updates.
 ## Support
 
 If you need help, contact us through our support channel.
+
+---
+
+Store: https://g7-development.tebex.io/ · Discord: https://discord.gg/P6XQ4N6M95
+
+Every G7 script auto-detects its framework (Qbox, QBCore, ESX) and inventory (g7_inventory first, then ox_inventory, qs-inventory, qb/ps/lj, ESX default). Always ensure G7 scripts **after** your framework, inventory and `oxmysql`.

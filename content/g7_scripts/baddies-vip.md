@@ -30,13 +30,10 @@ Add the items for your inventory from `install/`:
 ## Step 4 — Install the images
 Copy `install/images/*.png` into your inventory image folder. If images live elsewhere, set `Config.ItemImagePath` (e.g. `nui://g7_inventory/web/images/`).
 
-## Step 5 — Add your logo
-Replace `web/img/g7.png` with your logo (square PNG, 512×512 looks best).
-
-## Step 6 — Database
+## Step 5 — Database
 Nothing to do. Tables are created automatically.
 
-## Step 7 — Set who can open it
+## Step 6 — Set who can open it
 In `config.lua`, set `Config.Access.mode`:
 - `female` — saved character gender
 - `discord` — one of the Discord roles in `config_server.lua`
@@ -45,12 +42,12 @@ In `config.lua`, set `Config.Access.mode`:
 
 Staff can always open it (`Config.Access.staffBypass`).
 
-## Step 8 — Server config (`config_server.lua`)
+## Step 7 — Server config (`config_server.lua`)
 - Discord bot token and roles (if using Discord access or the Closet role lock)
 - Discord webhooks
-- Tebex packages (see Step 9)
+- Tebex packages (see Step 8)
 
-## Step 9 — Tebex (optional)
+## Step 8 — Tebex (optional)
 1. List packages under `ServerConfig.Tebex.packages` (each has a key, label and reward).
 2. In Tebex, give the package this server command (the last word must match a package key):
    ```
@@ -59,12 +56,12 @@ Staff can always open it (`Config.Access.staffBypass`).
 3. Optional chargeback command: `vipfemale_tebex_revoke {transaction}`
 4. Players claim in **Rewards → Store Claim** with their `tbx-…` transaction ID.
 
-## Step 10 — Hook up your other resources
+## Step 9 — Hook up your other resources
 Check `editable/client.lua` and `editable/server.lua`. Vehicle keys, fuel, clothing/appearance and dispatch are auto-detected; add your own resource there if it isn't listed.
 - **Dirty money:** drug sales pay `black_money` by default. Set `Config.Drug.sell.account = 'cash'` if you don't use dirty money.
 - **Closet:** auto-detects your appearance system, or set `Config.Closet.system = 'custom'`.
 
-## Step 11 — Test
+## Step 10 — Test
 1. Restart the server.
 2. Type `/vipfemale`.
 3. If you can't open it, use `/vipfemale_allow [id]` or check `Config.Access.mode`.

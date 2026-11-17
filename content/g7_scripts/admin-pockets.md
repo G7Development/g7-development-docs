@@ -15,7 +15,7 @@
 
 ---
 
-## Step 1: Add the resource
+## Step 1 — Add the resource
 
 1. Download `g7_adminpockets` after purchasing it on [Tebex](https://g7-development.tebex.io/).
 2. Unzip it and place the `g7_adminpockets` folder in your `resources` folder.
@@ -24,7 +24,7 @@
 
 ---
 
-## Step 2: server.cfg
+## Step 2 — server.cfg
 
 Start the script **after** oxmysql, your framework and your inventory:
 
@@ -39,7 +39,7 @@ ensure g7_adminpockets
 
 ---
 
-## Step 3: Permissions
+## Step 3 — Permissions
 
 Add these lines to your `server.cfg` so your staff can open the panel:
 
@@ -59,7 +59,7 @@ A player can open the panel if **any** of these are true:
 
 ---
 
-## Step 4: Database
+## Step 4 — Database
 
 Nothing to do. The tables are created automatically the first time the script starts.
 
@@ -73,7 +73,7 @@ If you prefer to run it yourself, import `sql/install.sql` into your database. I
 
 ---
 
-## Step 5: Choose your inventory
+## Step 5 — Choose your inventory
 
 Open `config.lua` and set your inventory. **g7_inventory is the default**, so if you use it you can skip this step.
 
@@ -95,7 +95,7 @@ Config.BaseWeightKg = {
 
 ---
 
-## Step 6: Add the pocket items
+## Step 6 — Add the pocket items
 
 Pocket items raise a player's carry weight just by holding them. Add these items to your inventory, then copy the item images into your inventory's image folder.
 
@@ -155,7 +155,7 @@ Pocket items raise a player's carry weight just by holding them. Add these items
 
 ---
 
-## Step 7: Notifications (optional)
+## Step 7 — Notifications (optional)
 
 Pick how players are notified when they get or lose pocket space:
 
@@ -173,7 +173,7 @@ Config.Notify = 'ox_lib' -- 'ox_lib' | 'nui' | 'qb' | 'esx' | 'custom'
 
 ---
 
-## Step 8: Start and test
+## Step 8 — Start and test
 
 1. Restart your server (or run `ensure g7_adminpockets`).
 2. Check your server console for these three lines:

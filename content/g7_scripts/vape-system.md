@@ -13,11 +13,11 @@ This guide takes you from download to a working vape system on your server. It t
 | **Vape props** | The `g7devvape` (vape pen) and `g7vapejuice` (juice bottle) prop resources. |
 | **Target (optional)** | ox_target or qb-target for the shops. Without one, a built-in "Press E" prompt is used. |
 
-No SQL is needed. Shops, flavour edits and the UI theme are saved in a JSON file inside the resource.
+No SQL is needed. Shops, flavor edits and the UI theme are saved in a JSON file inside the resource.
 
 ---
 
-## Step 1: Add the resource
+## Step 1 — Add the resource
 
 1. Download `g7_vapesystem` from your Keymaster / Tebex purchase.
 2. Unzip it and place the `g7_vapesystem` folder in your server's `resources` folder.
@@ -26,7 +26,7 @@ No SQL is needed. Shops, flavour edits and the UI theme are saved in a JSON file
 
 ---
 
-## Step 2: Start order in `server.cfg`
+## Step 2 — Start order in `server.cfg`
 
 `ox_lib` and the prop resources must start **before** the vape system:
 
@@ -41,14 +41,14 @@ If you use a framework, inventory or target resource, it should also start befor
 
 ---
 
-## Step 3: Add the items
+## Step 3 — Add the items
 
 The script uses three items:
 
 | Item | What it is |
 |---|---|
-| `g7_devvape` | The vape pen. Its tank, flavour, battery and condition are saved on the item. |
-| `g7_vapejuice` | One item for **every** flavour of juice. The flavour and how much is left are saved on the item. |
+| `g7_devvape` | The vape pen. Its tank, flavor, battery and condition are saved on the item. |
+| `g7_vapejuice` | One item for **every** flavor of juice. The flavor and how much is left are saved on the item. |
 | `g7_vapecharger` | The vape charger. Use it to charge a vape. |
 
 Pick your inventory below.
@@ -89,7 +89,7 @@ Open `ox_inventory/data/items.lua` and paste this inside the table:
 },
 ```
 
-> **Note:** the vape and juice items must have `stack = false`. Each one carries its own data (tank level, battery, flavour), so they can't stack.
+> **Note:** the vape and juice items must have `stack = false`. Each one carries its own data (tank level, battery, flavor), so they can't stack.
 
 ### qb-inventory, ps-inventory or lj-inventory (QBCore)
 
@@ -101,16 +101,13 @@ g7_vapejuice   = { name = 'g7_vapejuice',   label = 'Vape Refill',  weight = 1, 
 g7_vapecharger = { name = 'g7_vapecharger', label = 'Vape Charger', weight = 1, type = 'item', image = 'g7_vapecharger.png', unique = false, useable = true, shouldClose = true, description = 'USB-C fast charger. Use it to charge your vape.' },
 ```
 
-<details>
-<summary>Using an older QBCore with the <code>['name'] = { ... }</code> style?</summary>
+### Using an older QBCore with the `['name'] = { ... }` style?
 
 ```lua
 ['g7_devvape']     = { ['name'] = 'g7_devvape',     ['label'] = 'Vape Pen',     ['weight'] = 1, ['type'] = 'item', ['image'] = 'g7_devvape.png',     ['unique'] = true,  ['useable'] = true, ['shouldClose'] = true, ['description'] = 'Refillable pen.' },
 ['g7_vapejuice']   = { ['name'] = 'g7_vapejuice',   ['label'] = 'Vape Refill',  ['weight'] = 1, ['type'] = 'item', ['image'] = 'g7_vapejuice.png',   ['unique'] = true,  ['useable'] = true, ['shouldClose'] = true, ['description'] = 'Opens the refill station.' },
 ['g7_vapecharger'] = { ['name'] = 'g7_vapecharger', ['label'] = 'Vape Charger', ['weight'] = 1, ['type'] = 'item', ['image'] = 'g7_vapecharger.png', ['unique'] = false, ['useable'] = true, ['shouldClose'] = true, ['description'] = 'Charges your vape.' },
 ```
-
-</details>
 
 ### Custom inventory
 
@@ -140,7 +137,7 @@ g7_vapecharger = { name = 'g7_vapecharger', label = 'Vape Charger', weight = 1, 
 
 ---
 
-## Step 4: Add the item images
+## Step 4 — Add the item images
 
 Copy **every** image from `g7_vapesystem/install/images/` into your inventory's image folder:
 
@@ -165,11 +162,11 @@ g7_vapejuice_unflavoured.png
 g7_vapejuice_watermelonice.png
 ```
 
-> **Tip:** on ox_inventory every flavour shows its own bottle picture. Other inventories show `g7_vapejuice.png` for all flavours.
+> **Tip:** on ox_inventory every flavor shows its own bottle picture. Other inventories show `g7_vapejuice.png` for all flavors.
 
 ---
 
-## Step 5: Admin permissions
+## Step 5 — Admin permissions
 
 Admins can open `/vapeadmin` and use the admin tools. Add this to `server.cfg`, and change `group.admin` to your own admin group if it's different:
 
@@ -189,7 +186,7 @@ Config.Admin = {
 
 ---
 
-## Step 6: Full server restart
+## Step 6 — Full server restart
 
 Do a **full server restart** the first time. Restarting just the resource is not enough.
 
@@ -197,7 +194,7 @@ Do a **full server restart** the first time. Restarting just the resource is not
 
 ---
 
-## Step 7: Test it
+## Step 7 — Test it
 
 A test shop called **Vape Shop** is created at Legion Square the first time the script starts. You can edit or delete it in `/vapeadmin`.
 
@@ -211,8 +208,8 @@ You can also give yourself items. These commands work in game for admins and in 
 
 Then check:
 
-- [ ] Use the vape: it appears in your hand and the side HUD shows the tank, flavour, battery and condition.
-- [ ] Hold **E** to hit it, let go to exhale: a cloud in the flavour's colour comes out.
+- [ ] Use the vape: it appears in your hand and the side HUD shows the tank, flavor, battery and condition.
+- [ ] Hold **E** to hit it, let go to exhale: a cloud in the flavor's color comes out.
 - [ ] Use the bottle: the refill station opens.
 - [ ] Use the charger: the charge station opens.
 - [ ] Walk up to the shopkeeper: the shop opens.
@@ -229,64 +226,56 @@ Everything can be changed in `config.lua`. The most common settings:
 | `Config.Inventory` | `'auto'`, or force `'ox'`, `'qb'` or `'custom'`. |
 | `Config.Notify` | `'ox_lib'`, `'nui'`, `'qb'`, `'esx'` or `'custom'`. |
 | `Config.Devices` | Vape models: tank size, how fast they use juice and battery, price. |
-| `Config.Flavors` | Flavour names, colours, pictures and smoke colours. |
+| `Config.Flavors` | Flavor names, colors, pictures and smoke colors. |
 | `Config.Battery` | Battery drain per hit and while the vape is held out. |
 | `Config.Durability` | How fast vapes wear out and break. |
 | `Config.Charger` | Charging speed, price, and whether the charger is used up. |
-| `Config.Bubbles` | The speech bubble lines for each flavour, and how often they show. |
+| `Config.Bubbles` | The speech bubble lines for each flavor, and how often they show. |
 | `Config.Shops` | Shop interaction (`ox_target`, `qb-target` or prompt), default shopkeeper, buy limits. |
 | `Config.Controls` | The hit and put-away keys, and the `/vape` command. |
 | `Config.Commands` | The names of every admin command. |
-| `Config.Theme` | The UI colours. Admins can also change these live in `/vapeadmin`. |
+| `Config.Theme` | The UI colors. Admins can also change these live in `/vapeadmin`. |
 
-Shops, prices, flavour edits and the theme you change in `/vapeadmin` save to `data/store.json` and apply to everyone right away, with no restart.
+Shops, prices, flavor edits and the theme you change in `/vapeadmin` save to `data/store.json` and apply to everyone right away, with no restart.
 
 ---
 
 ## Troubleshooting
 
-<details>
-<summary><b>Using an item does nothing</b></summary>
+### Using an item does nothing
 
 The items weren't added, or were added to the wrong inventory. Redo [Step 3](#step-3-add-the-items) and restart. On ox_inventory, check that each item has `server = { export = 'g7_vapesystem.g7UseItem' }`.
-</details>
 
-<details>
-<summary><b>No vape in my hand, or a stock vape shows instead of mine</b></summary>
+### No vape in my hand, or a stock vape shows instead of mine
 
-The `g7devvape` prop resource isn't started, or it starts after `g7_vapesystem`. Fix the order in [Step 2](#step-2-start-order-in-servercfg) and do a full restart.
-</details>
+The `g7devvape` prop resource isn't started, or it starts after `g7_vapesystem`. Fix the order in [Step 2](#step-2-start-order-in-server-cfg) and do a full restart.
 
-<details>
-<summary><b>The vape is too big or too small in the hand</b></summary>
+### The vape is too big or too small in the hand
 
 Keep the grip `scale` at `1.0` in `Config.Grips`. Any other value makes the vape trail behind the hand when you walk. Resize the model itself in Blender or CodeWalker instead. Admins can line up the position with `/vapegrip`.
-</details>
 
-<details>
-<summary><b>No smoke when I exhale</b></summary>
+### No smoke when I exhale
 
 Do a full server restart. If the F8 console says `particle asset g7smokecustom did not load`, check that `stream/g7smokecustom.ypt` is in the resource. An empty tank or a dead battery also makes no smoke.
-</details>
 
-<details>
-<summary><b>Item pictures are blank</b></summary>
+### Item pictures are blank
 
 The images from `install/images/` weren't copied into your inventory's image folder. See [Step 4](#step-4-add-the-item-images).
-</details>
 
-<details>
-<summary><b>I can't open /vapeadmin</b></summary>
+### I can't open /vapeadmin
 
 Add the `add_ace` line from [Step 5](#step-5-admin-permissions), or add your license or Discord ID to `Config.Admin.identifiers`.
-</details>
 
-<details>
-<summary><b>"You are too far from the counter" in the shop</b></summary>
+### "You are too far from the counter" in the shop
 
 Stand closer to the shopkeeper. The distance is set by `Config.Shops.distance`.
-</details>
 
 ---
 
 Need more help? Open a ticket in the **G7 Development** Discord.
+
+---
+
+Store: https://g7-development.tebex.io/ · Discord: https://discord.gg/P6XQ4N6M95
+
+Every G7 script auto-detects its framework (Qbox, QBCore, ESX) and inventory (g7_inventory first, then ox_inventory, qs-inventory, qb/ps/lj, ESX default). Always ensure G7 scripts **after** your framework, inventory and `oxmysql`.

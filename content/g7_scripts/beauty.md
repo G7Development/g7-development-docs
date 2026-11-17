@@ -13,7 +13,7 @@
   set sv_enforceGameBuild 3095
   ```
 
-## 1. Add the resource
+## Step 1 — Add the resource
 
 1. Put the `g7_beauty` folder in your `resources` folder.
 2. In `server.cfg`, start it **after** your framework, inventory, target, ox_lib and oxmysql:
@@ -22,11 +22,11 @@
    ensure g7_beauty
    ```
 
-## 2. Database
+## Step 2 — Database
 
 Nothing to do. The tables are created automatically the first time the script starts. If you'd rather create them yourself, run `sql/install.sql`.
 
-## 3. Items
+## Step 3 — Items
 
 Add the items to your inventory using the matching file in the `install` folder, and copy the item images from `install/images/` into your inventory's images folder.
 
@@ -39,7 +39,7 @@ Add the items to your inventory using the matching file in the `install` folder,
 
 Press-on nails need an inventory that supports item metadata, so they turn off automatically on the ESX default inventory.
 
-## 4. Jobs
+## Step 4 — Jobs
 
 The script uses two jobs:
 
@@ -48,13 +48,13 @@ The script uses two jobs:
 
 Copy the job setup for your framework from `install/jobs.md` (Qbox, QBCore and ESX examples are included). If you want different job names, change them in `Config.Services` in `config.lua`.
 
-## 5. Salon locations
+## Step 5 — Salon locations
 
 Open `config.lua` and set your salon locations under `Config.Salons`: the nail stations, lash beds, vanities, kiosk and boss menu spot. The example coordinates are only placeholders, so replace them with the spots in your MLO.
 
 To grab a position, turn on `Config.Debug`, stand where the chair or spot should be and type `/beautypos`. The position is copied to your clipboard.
 
-## 6. Admin permission (for vanities)
+## Step 6 — Admin permission (for vanities)
 
 To let admins manage any placed vanity, add this to `server.cfg`:
 
@@ -62,7 +62,7 @@ To let admins manage any placed vanity, add this to `server.cfg`:
 add_ace group.admin g7beauty.admin allow
 ```
 
-## 7. Image uploads (optional)
+## Step 7 — Image uploads (optional)
 
 To let players upload their own images onto nails, add **one** of these to `server.cfg` (never to the config):
 
@@ -78,7 +78,7 @@ set g7_beauty_webhook "https://discord.com/api/webhooks/..."
 
 FiveManage is recommended, because Discord image links expire after about a day and the image disappears from the nails.
 
-## 8. Before going live
+## Step 8 — Before going live
 
 In `config.lua`:
 
