@@ -17,7 +17,7 @@
 
 ## Step 1 — Add the resource
 
-1. Download `g7_adminpockets` after purchasing it on [Tebex](https://g7-development.tebex.io/).
+1. Download `g7_adminpockets` after purchasing it on [Tebex](https://g7-store.pages.dev/).
 2. Unzip it and place the `g7_adminpockets` folder in your `resources` folder.
 
 > ⚠️ Do not rename the folder. It must stay `g7_adminpockets`.

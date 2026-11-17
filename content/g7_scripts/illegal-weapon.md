@@ -274,6 +274,6 @@ For support, contact **G7 Development**.
 
 ---
 
-Store: https://g7-development.tebex.io/ · Discord: https://discord.gg/P6XQ4N6M95
+Store: https://g7-store.pages.dev/ · Discord: https://discord.gg/P6XQ4N6M95
 
 Every G7 script auto-detects its framework (Qbox, QBCore, ESX) and inventory (g7_inventory first, then ox_inventory, qs-inventory, qb/ps/lj, ESX default). Always ensure G7 scripts **after** your framework, inventory and `oxmysql`.

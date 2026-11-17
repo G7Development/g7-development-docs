@@ -113,4 +113,4 @@ exports.g7_beauty:Notify('Your set is ready', 'success', 5000)
 
 ---
 
-Store: [https://g7-development.tebex.io/](https://g7-development.tebex.io/) · Discord: [https://discord.gg/P6XQ4N6M95](https://discord.gg/P6XQ4N6M95)
+Store: [https://g7-store.pages.dev/](https://g7-store.pages.dev/) · Discord: [https://discord.gg/P6XQ4N6M95](https://discord.gg/P6XQ4N6M95)
